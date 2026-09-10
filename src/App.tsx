@@ -1,6 +1,8 @@
+
+import AppRoutes from "./routes/AppRoutes"
 function App() {
   return (
-    <h1>Gestor de tareas</h1>
+    <AppRoutes />
   )
 }
 
