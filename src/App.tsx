@@ -1,8 +1,11 @@
-
 import AppRoutes from "./routes/AppRoutes"
+import Authenticator from "./features/Authenticator"
+
 function App() {
   return (
-    <AppRoutes />
+    <Authenticator>
+      <AppRoutes />
+    </Authenticator >
   )
 }
 

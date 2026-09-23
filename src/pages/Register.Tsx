@@ -1,11 +1,42 @@
+import { useState, type FormEvent } from "react"
+import { useAuth } from "../features/Authenticator"
+
+
 
 function Register() {
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const [error, setError] = useState("")
+    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+        setError("")
+
+        try {
+            await signUp(email, password)
+        }
+        catch {
+            setError("No se pudo registrar el usuario")
+        }
+    }
+    const { signUp } = useAuth()
+
     return (
-        <h1>Registrarse</h1>
+        <form onSubmit={handleSubmit}>
+            <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+            />
+            <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+            />
 
+            {error && <p>{error}</p>}
+
+            <button type="submit">Registrarse</button>
+        </form>
     )
-
-
 }
-
 export default Register
