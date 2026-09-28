@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 
 function Home() {
+
     return (
         <>
             <h1>Inicio</h1>

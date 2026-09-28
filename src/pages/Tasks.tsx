@@ -1,11 +1,13 @@
+import { useAuth } from "../features/Authenticator"
+
 function Tasks() {
+    const { logout } = useAuth()
     return (
-        <h1>Tareas</h1>
+        <button onClick={logout}>
+            Cerrar Sesion
+        </button>
 
     )
 
-
-
 }
-
 export default Tasks

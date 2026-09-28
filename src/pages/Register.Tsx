@@ -1,5 +1,6 @@
 import { useState, type FormEvent } from "react"
 import { useAuth } from "../features/Authenticator"
+import { getAuthErrorMessage } from "../utils/authErrors"
 
 
 
@@ -14,8 +15,8 @@ function Register() {
         try {
             await signUp(email, password)
         }
-        catch {
-            setError("No se pudo registrar el usuario")
+        catch (error) {
+            setError(getAuthErrorMessage(error))
         }
     }
     const { signUp } = useAuth()

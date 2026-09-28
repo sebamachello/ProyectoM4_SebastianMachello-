@@ -1,11 +1,12 @@
 import { createContext, useState, useEffect, useContext, type ReactNode } from "react"
-import { onAuthStateChanged, createUserWithEmailAndPassword, type User } from "firebase/auth"
+import { onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, type User } from "firebase/auth"
 import { auth } from "../services/firebase"
 interface AuthContextValue {
     user: User | null
     loading: boolean
     signUp: (email: string, password: string) => Promise<void>
-
+    signIn: (email: string, password: string) => Promise<void>
+    logout: () => Promise<void>
 }
 const AuthContext = createContext<AuthContextValue | undefined>(undefined)
 
@@ -32,8 +33,15 @@ function Authenticator({ children }: AuthenticatorProps) {
         await createUserWithEmailAndPassword(auth, email, password)
     }
 
+    const signIn = async (email: string, password: string) => {
+        await signInWithEmailAndPassword(auth, email, password)
+    }
+    const logout = async () => {
+        await signOut(auth)
+    }
+
     return (
-        <AuthContext.Provider value={{ user, signUp, loading }}>
+        <AuthContext.Provider value={{ user, signUp, logout, signIn, loading }}>
             {children}
         </AuthContext.Provider>
     )
