@@ -77,3 +77,198 @@ body {
     justify-content: center;
   }
 }
+
+/* LOGIN Y REGISTER */
+
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.auth-card h1 {
+  margin: 0 0 0.5rem;
+  text-align: center;
+}
+
+.auth-subtitle {
+  margin: 0 0 2rem;
+  text-align: center;
+  color: #6b7280;
+}
+
+.auth-card label {
+  margin-bottom: 0.4rem;
+  font-weight: 600;
+}
+
+.auth-card input,
+.task-form input {
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font: inherit;
+}
+
+.auth-card input:focus,
+.task-form input:focus {
+  outline: 2px solid #7c3aed;
+  border-color: transparent;
+}
+
+.auth-card button,
+.task-form button,
+.task-actions button {
+  padding: 0.8rem 1rem;
+  border: none;
+  border-radius: 8px;
+  background-color: #7c3aed;
+  color: white;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.auth-card button:hover,
+.task-form button:hover,
+.task-actions button:hover {
+  background-color: #6d28d9;
+}
+
+.form-error {
+  margin: 0 0 1rem;
+  color: #dc2626;
+}
+
+/* TASKS */
+
+.tasks-page {
+  min-height: 100vh;
+  padding: 1rem;
+}
+
+.tasks-container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.tasks-header {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.tasks-header h1 {
+  margin-bottom: 0.25rem;
+}
+
+.tasks-header p {
+  margin: 0;
+  color: #6b7280;
+}
+
+.logout-button {
+  padding: 0.7rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background-color: white;
+  color: #374151;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.task-form {
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+.task-form h2 {
+  margin-top: 0;
+}
+
+.task-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.task-card {
+  padding: 1.5rem;
+  background-color: white;
+  border-left: 5px solid #7c3aed;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+}
+
+.task-card h3 {
+  margin: 0 0 0.5rem;
+}
+
+.task-card p {
+  margin: 0 0 1.5rem;
+  color: #6b7280;
+}
+
+.task-card--completed {
+  opacity: 0.7;
+  border-left-color: #16a34a;
+}
+
+.task-card--completed h3 {
+  text-decoration: line-through;
+}
+
+.task-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.task-actions .delete-button {
+  background-color: #dc2626;
+}
+
+.task-actions .delete-button:hover {
+  background-color: #b91c1c;
+}
+
+/* DESKTOP */
+
+@media (min-width: 768px) {
+  .tasks-page {
+    padding: 2rem;
+  }
+
+  .tasks-header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .task-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .task-actions {
+    flex-direction: row;
+  }
+}
