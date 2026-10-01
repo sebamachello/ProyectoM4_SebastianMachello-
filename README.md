@@ -31,6 +31,8 @@ https://github.com/sebamachello/ProyectoM4_SebastianMachello-.git
 - Reglas de seguridad en Firestore.
 - Navegación SPA con React Router.
 - Aplicación desplegada en Vercel.
+- Notificaciones por correo electrónico al crear tareas.
+- Integración con Amazon SES mediante una función serverless en Vercel.
 
 ## Tecnologías utilizadas
 
@@ -43,6 +45,9 @@ https://github.com/sebamachello/ProyectoM4_SebastianMachello-.git
 - Vitest
 - React Testing Library
 - Vercel
+- Amazon SES
+- AWS SDK
+- Vercel Functions
 
 ## Instalación
 
@@ -73,6 +78,15 @@ VITE_FIREBASE_API_KEY=
 VITE_FIREBASE_AUTH_DOMAIN=
 VITE_FIREBASE_PROJECT_ID=
 VITE_FIREBASE_APP_ID=
+
+AWS_ACCESS_KEY_ID=
+AWS_SECRET_ACCESS_KEY=
+AWS_REGION=
+SES_FROM_EMAIL=
+
+Las variables de Firebase son utilizadas por el frontend.
+
+Las variables de AWS son utilizadas únicamente por la función serverless y deben configurarse de forma segura en Vercel. Las credenciales de AWS no se exponen en el frontend.
 ```
 
 Los valores deben corresponder a la configuración del proyecto de Firebase.
@@ -119,6 +133,8 @@ Cada tarea almacena el `userId` del usuario que la creó, evitando que otros usu
 
 Las credenciales y variables sensibles no se almacenan directamente en el código fuente.
 
+Las credenciales de AWS SES se almacenan como variables de entorno del servidor en Vercel y no utilizan el prefijo `VITE_`, evitando su exposición en el frontend.
+
 ## Uso de Inteligencia Artificial
 
 Durante el desarrollo utilicé inteligencia artificial como herramienta de apoyo para recibir explicaciones, comprender conceptos y orientarme ante errores o dificultades.
@@ -144,11 +160,12 @@ La IA fue utilizada principalmente como herramienta de aprendizaje y revisión d
 
 ## Estado del proyecto
 
-Actualmente se encuentran implementadas la autenticación, protección de rutas, persistencia en Firestore, CRUD de tareas, sincronización en tiempo real, testing y deployment en Vercel.
+## Estado del proyecto
 
-### Funcionalidad pendiente
+Actualmente se encuentran implementadas la autenticación, protección de rutas, persistencia en Firestore, CRUD de tareas, sincronización en tiempo real, testing, deployment en Vercel y notificaciones por correo electrónico mediante Amazon SES.
 
-La integración de notificaciones por correo electrónico mediante AWS SES y una función serverless se encuentra pendiente de implementación.
+Al crear una nueva tarea, la aplicación utiliza una función serverless en Vercel para enviar una notificación al correo electrónico del usuario autenticado mediante Amazon SES.
+
 
 ## Autor
 
