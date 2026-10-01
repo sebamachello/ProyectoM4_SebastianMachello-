@@ -131,15 +131,16 @@ La IA fue utilizada principalmente como herramienta de aprendizaje y revisión d
 
 ### Inicio
 
-⚠️ AGREGAR CAPTURA DE LA HOME
+![Pantalla de inicio](./screenshots/home.png)
 
 ### Autenticación
 
-⚠️ AGREGAR CAPTURA DE LOGIN O REGISTRO
+![Pantalla de Registro](./screenshots/register.png)
+
 
 ### Gestión de tareas
 
-⚠️ AGREGAR CAPTURA DE TASKS
+![Pantalla de gestión de tareas](./screenshots/tasks.png)
 
 ## Estado del proyecto
 
