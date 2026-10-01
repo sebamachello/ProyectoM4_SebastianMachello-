@@ -30,6 +30,18 @@ function Tasks() {
 
         await createTask(title, description, user.uid)
 
+        await fetch("/api/send-email", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                to: user.email,
+                subject: "Nueva tarea creada",
+                message: `Creaste la tarea: ${title}`
+            })
+        })
+
         setTitle("")
         setDescription("")
     }
