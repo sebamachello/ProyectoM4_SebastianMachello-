@@ -1,10 +1,13 @@
 import { useState, type FormEvent } from "react"
 import { useAuth } from "../features/Authenticator"
 import { getAuthErrorMessage } from "../utils/authErrors"
+import { useNavigate } from "react-router-dom"
 
 
 
 function Register() {
+    const navigate = useNavigate()
+    const { signUp } = useAuth()
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [error, setError] = useState("")
@@ -14,12 +17,12 @@ function Register() {
 
         try {
             await signUp(email, password)
+            navigate("/tasks")
         }
         catch (error) {
             setError(getAuthErrorMessage(error))
         }
     }
-    const { signUp } = useAuth()
 
     return (
         <form onSubmit={handleSubmit}>
