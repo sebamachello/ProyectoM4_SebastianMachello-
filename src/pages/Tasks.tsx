@@ -35,52 +35,77 @@ function Tasks() {
     }
 
     return (
-        <>
-            <form onSubmit={handleSubmit} >
-
-                <input
-                    type="text"
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
-                />
-                <input
-                    type="text"
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
-
-                />
-                <button type="submit">
-                    Crear tarea
-                </button>
-                <button type="button" onClick={logout}>
-                    Cerrar Sesion
-                </button>
-
-            </form>
-            {tasks.map((task) => (
-                <div key={task.id}>
-                    <h3>{task.title}</h3>
-                    <p>{task.description}</p>
+        <main className="tasks-page">
+            <div className="tasks-container">
+                <header className="tasks-header">
+                    <div>
+                        <h1>Mis tareas</h1>
+                        <p>Organizá y administrá tus pendientes.</p>
+                    </div>
 
                     <button
+                        className="logout-button"
                         type="button"
-                        onClick={() => updateTask(task.id, !task.completed)}
+                        onClick={logout}
                     >
-                        {task.completed ? "Marcar pendiente" : "Marcar completada"}
+                        Cerrar Sesion
                     </button>
-                    <button
-                        type="button"
-                        onClick={() => deleteTask(task.id)}
-                    >
-                        Eliminar
+                </header>
+
+                <form className="task-form" onSubmit={handleSubmit}>
+                    <h2>Nueva tarea</h2>
+
+                    <input
+                        type="text"
+                        placeholder="Título"
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
+                    />
+
+                    <input
+                        type="text"
+                        placeholder="Descripción"
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
+                    />
+
+                    <button type="submit">
+                        Crear tarea
                     </button>
-                </div>
-            ))}
+                </form>
 
-        </>
+                <section className="task-list">
+                    {tasks.map((task) => (
+                        <article
+                            className={`task-card ${task.completed ? "task-card--completed" : ""}`}
+                            key={task.id}
+                        >
+                            <h3>{task.title}</h3>
+                            <p>{task.description}</p>
 
+                            <div className="task-actions">
+                                <button
+                                    type="button"
+                                    onClick={() => updateTask(task.id, !task.completed)}
+                                >
+                                    {task.completed
+                                        ? "Marcar pendiente"
+                                        : "Marcar completada"}
+                                </button>
 
-
+                                <button
+                                    className="delete-button"
+                                    type="button"
+                                    onClick={() => deleteTask(task.id)}
+                                >
+                                    Eliminar
+                                </button>
+                            </div>
+                        </article>
+                    ))}
+                </section>
+            </div>
+        </main>
     )
 
 }

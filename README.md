@@ -1,75 +1,156 @@
-# React + TypeScript + Vite
+# Gestor Estratégico de Tareas
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Proyecto Integrador del Módulo 4 de Desarrollo Full Stack en Henry.
 
-Currently, two official plugins are available:
+La aplicación permite a los usuarios registrarse, iniciar sesión y administrar sus tareas personales mediante una aplicación desarrollada con React y TypeScript.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Cada usuario puede crear, visualizar, actualizar y eliminar sus propias tareas, almacenadas de forma persistente en Firebase Firestore.
 
-## React Compiler
+## 🚀 Aplicación desplegada
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+https://proyecto-m4-sebastian-machello.vercel.app
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 📂 Repositorio
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+https://github.com/sebamachello/ProyectoM4_SebastianMachello-.git
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Funcionalidades
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- Registro de usuarios.
+- Inicio y cierre de sesión.
+- Persistencia de sesión con Firebase Authentication.
+- Rutas protegidas.
+- Creación de tareas.
+- Visualización de tareas.
+- Actualización del estado de las tareas.
+- Eliminación de tareas.
+- Persistencia de datos mediante Firestore.
+- Sincronización de tareas en tiempo real.
+- Separación de tareas por usuario.
+- Reglas de seguridad en Firestore.
+- Navegación SPA con React Router.
+- Aplicación desplegada en Vercel.
 
+## Tecnologías utilizadas
+
+- React
+- TypeScript
+- Vite
+- React Router
+- Firebase Authentication
+- Cloud Firestore
+- Vitest
+- React Testing Library
+- Vercel
+
+## Instalación
+
+Clonar el repositorio:
+
+```bash
+git clone https://github.com/sebamachello/ProyectoM4_SebastianMachello-.git
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+Entrar al proyecto:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+cd gestor-tareas
 ```
+
+Instalar las dependencias:
+
+```bash
+npm install
+```
+
+## Variables de entorno
+
+Crear un archivo `.env` en la raíz del proyecto utilizando como referencia `.env.example`.
+
+```env
+VITE_FIREBASE_API_KEY=
+VITE_FIREBASE_AUTH_DOMAIN=
+VITE_FIREBASE_PROJECT_ID=
+VITE_FIREBASE_APP_ID=
+```
+
+Los valores deben corresponder a la configuración del proyecto de Firebase.
+
+El archivo `.env` no debe subirse al repositorio.
+
+## Ejecutar el proyecto localmente
+
+```bash
+npm run dev
+```
+
+## Testing
+
+Para ejecutar las pruebas:
+
+```bash
+npm test
+```
+
+El proyecto incluye pruebas realizadas con Vitest y React Testing Library, utilizando mocks para aislar dependencias cuando es necesario.
+
+## Build
+
+Para generar el build de producción:
+
+```bash
+npm run build
+```
+
+## Deploy
+
+La aplicación está desplegada en Vercel.
+
+Las variables de entorno necesarias para Firebase deben configurarse también dentro del proyecto en Vercel.
+
+Se utiliza `vercel.json` para redirigir las rutas de la SPA hacia `index.html`, permitiendo acceder y recargar directamente rutas como `/tasks`.
+
+## Seguridad
+
+Las reglas de Firestore restringen el acceso a las tareas según el usuario autenticado.
+
+Cada tarea almacena el `userId` del usuario que la creó, evitando que otros usuarios puedan acceder o modificar sus datos.
+
+Las credenciales y variables sensibles no se almacenan directamente en el código fuente.
+
+## Uso de Inteligencia Artificial
+
+Durante el desarrollo utilicé inteligencia artificial como herramienta de apoyo para recibir explicaciones, comprender conceptos y orientarme ante errores o dificultades.
+
+La implementación y las decisiones del proyecto fueron realizadas por mí a partir de estas explicaciones y de los conocimientos adquiridos durante el módulo.
+
+La IA fue utilizada principalmente como herramienta de aprendizaje y revisión durante el proceso de desarrollo.
+
+## Capturas
+
+### Inicio
+
+⚠️ AGREGAR CAPTURA DE LA HOME
+
+### Autenticación
+
+⚠️ AGREGAR CAPTURA DE LOGIN O REGISTRO
+
+### Gestión de tareas
+
+⚠️ AGREGAR CAPTURA DE TASKS
+
+## Estado del proyecto
+
+Actualmente se encuentran implementadas la autenticación, protección de rutas, persistencia en Firestore, CRUD de tareas, sincronización en tiempo real, testing y deployment en Vercel.
+
+### Funcionalidad pendiente
+
+La integración de notificaciones por correo electrónico mediante AWS SES y una función serverless se encuentra pendiente de implementación.
+
+## Autor
+
+Sebastián Machello
+
+Proyecto Integrador — Desarrollo Full Stack — Henry

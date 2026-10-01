@@ -26,22 +26,36 @@ function Login() {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-            />
-            <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-            />
+        <main className="auth-page">
+            <form className="auth-card" onSubmit={handleSubmit}>
+                <h1>Iniciar sesión</h1>
+                <p className="auth-subtitle">
+                    Ingresá a tu cuenta para administrar tus tareas.
+                </p>
 
-            {error && <p>{error}</p>}
+                <label htmlFor="email">Email</label>
+                <input
+                    id="email"
+                    type="email"
+                    placeholder="tu@email.com"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                />
 
-            <button type="submit">Iniciar Sesion</button>
-        </form>
+                <label htmlFor="password">Contraseña</label>
+                <input
+                    id="password"
+                    type="password"
+                    placeholder="Ingresá tu contraseña"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                />
+
+                {error && <p className="form-error">{error}</p>}
+
+                <button type="submit">Iniciar Sesion</button>
+            </form>
+        </main>
     )
 }
 

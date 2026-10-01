@@ -25,22 +25,36 @@ function Register() {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-            />
-            <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-            />
+        <main className="auth-page">
+            <form className="auth-card" onSubmit={handleSubmit}>
+                <h1>Crear cuenta</h1>
+                <p className="auth-subtitle">
+                    Registrate para empezar a organizar tus tareas.
+                </p>
 
-            {error && <p>{error}</p>}
+                <label htmlFor="email">Email</label>
+                <input
+                    id="email"
+                    type="email"
+                    placeholder="tu@email.com"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                />
 
-            <button type="submit">Registrarse</button>
-        </form>
+                <label htmlFor="password">Contraseña</label>
+                <input
+                    id="password"
+                    type="password"
+                    placeholder="Creá una contraseña"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                />
+
+                {error && <p className="form-error">{error}</p>}
+
+                <button type="submit">Registrarse</button>
+            </form>
+        </main>
     )
 }
 export default Register

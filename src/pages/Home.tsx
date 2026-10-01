@@ -1,17 +1,22 @@
 import { Link } from "react-router-dom"
 
 function Home() {
-
     return (
-        <>
-            <h1>Inicio</h1>
+        <main className="home">
+            <div className="home__card">
+                <h1>Gestor de Tareas</h1>
 
-            <Link to={"/login"}>Iniciar sesión</Link>
-            <Link to={"/register"}>Registro</Link>
-            <Link to={"/tasks"}>Tareas</Link>
+                <p>
+                    Organizá tus tareas de forma simple y mantené tus pendientes al día.
+                </p>
 
-        </>
+                <div className="home__actions">
+                    <Link to="/login">Iniciar sesión</Link>
+                    <Link to="/register">Registrarse</Link>
+                </div>
+            </div>
+        </main>
     )
 }
 
-export default Home 
+export default Home
